@@ -1,0 +1,49 @@
+.cards > p{
+    display: flex;
+    justify-content: space-between;
+    background-color: #edf5e1;
+    border-radius: 10px;
+    height: auto;
+    width: 100%;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    word-break: break-all;
+    box-shadow: 1px 5px 1px 1px #5cdb95;
+    margin-bottom: 1.5em;
+    color:#05386b;
+}
+
+.cards-title{
+    padding-left: 7px;
+}
+.card-delete{
+    margin-top: -5px;
+    margin-right: 2px;
+
+}
+.card-delete button{
+    border: none;
+    background: none;
+    font-size: 17px;
+    font-weight: 600;
+    outline: none;
+    color: #05386b;
+}
+
+.card-input form > input{
+    width: 100%;
+    text-indent: 12px;
+    border-radius: 4px;
+    border: 2px solid #edf5e1;
+    outline: none;
+    height: 46px;
+    color: #05386b;
+    background: #edf5e1;
+    /* opacity: 0.77; */
+    font-size: 1em;
+    font-weight: bold;
+}
+
+.card-input form > input::placeholder{
+    color:#05386b;
+}

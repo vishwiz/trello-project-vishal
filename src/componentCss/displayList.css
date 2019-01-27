@@ -1,0 +1,55 @@
+.board-list{
+    padding: 1em;
+    border-radius: 4px;
+    background-color: #05386b;
+    width: 20em;
+    word-break: break-all;
+    overflow-y: auto;
+    max-height:467px;
+    /* position: relative; */
+
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 5px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px #05386b; 
+    border-radius: 10px;
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #05386b; 
+    border-radius: 10px;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #05386b; 
+  }
+
+.board-list-name > h1{
+    /* position: absolute; */
+    color: #edf5e1;
+    font-size: 23px;
+    word-break: break-all;
+    margin-top: 1em;
+    margin-bottom: 1.5em;
+}
+.board-list-name > button{
+    /* position: absolute; */
+    margin-left: 18.2em;
+    background: none;
+    outline: none;
+    color: #edf5e1;
+    border: 1.2px solid #edf5e1;
+    border-radius: 10px;
+    height: 26px;
+    width: 69px;
+    font-weight: 700;
+
+} 
