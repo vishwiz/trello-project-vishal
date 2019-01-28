@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-
+import '../componentCss/addList.css'
 class AddList extends Component{
     constructor(props){
         super(props)
@@ -39,7 +39,7 @@ class AddList extends Component{
  }
     render(){
         return(
-            <form onSubmit={this.addNewList}>
+            <form className="add-list-input" onSubmit={this.addNewList}>
                 <input value={this.state.inputValue} onChange={this.inputValueHandler} placeholder="ADD LIST" />
                 </form>
         )

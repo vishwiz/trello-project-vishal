@@ -1,0 +1,11 @@
+.add-list-input input{
+    border-radius: 10px;
+    text-align: center;
+    height: 6%;
+    outline: none;
+    border: none;
+}
+
+/* .add-list-input{
+    width:1px;
+} */

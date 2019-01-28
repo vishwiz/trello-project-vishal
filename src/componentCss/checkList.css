@@ -1,7 +1,7 @@
-h1 {
+/* h1 {
     margin: 0;
     padding: 0;
-}
+} */
   .popup {
     position: fixed;
     width: 100%;
@@ -21,4 +21,24 @@ h1 {
     bottom: 10%;
     margin: auto;
     background: white;
+    overflow-y:auto; 
+  }
+
+  .close-button{
+    text-align-last:end;
+    margin-top:1em;
+  }
+
+  .check-list-delete{
+    display:flex;
+    justify-content: space-between;
+  }
+  .check-list-delete button{
+    border: none;
+    background: none;
+    color: black;
+    font-weight: 900;
+  }
+  .check-list-delete h1{
+    font-size: 24px;
   }

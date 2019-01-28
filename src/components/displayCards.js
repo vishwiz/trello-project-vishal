@@ -3,12 +3,17 @@ import '../componentCss/displayCards.css';
 import CheckList from './checkList';
 import DeleteCards from './deleteCards';
 import AddCards from './addCards';
+
 class DisplayCards extends Component{
     constructor(props){
         super(props)
         this.deleteCard = this.deleteCard.bind(this)
+        this.togglePopup = this.togglePopup.bind(this)
         this.state = {
-            listCardData:[]
+            listCardData:[],
+            showPopup: false,
+            currentCardId:""
+
         }
 
     }
@@ -23,6 +28,7 @@ class DisplayCards extends Component{
         })
     }
 
+
     addCard = (newList)=>{
         let list =  this.state.listCardData
         list.push(newList)
@@ -34,32 +40,50 @@ class DisplayCards extends Component{
     deleteCard = (cardId)=>{
         let card = this.state.listCardData
        card = card.filter(data=>data.id!==cardId)
-    //    console.log(k) 
        return this.setState({
             listCardData : card
         })
     }
-    check = ()=>{
-        return <CheckList />
-    }
+    togglePopup(cardId) {
+        console.log(cardId)
+        this.setState({
+          showPopup: !this.state.showPopup,
+          currentCardId:cardId
+        });
+      }
 
     render(){
        let listId = this.props.listId
-    //    console.log(listId)
-        // console.log(this.state.listCardData)
         if(this.state.listCardData.length!==0){
            return ( <div className="fixed-cards">
                     {this.state.listCardData.map(cardDetails=>{
-                        console.log(cardDetails.id)
+                        let newCardId=cardDetails.id
                         return( 
                         <div> 
-                            <div  className="cards">{cardDetails.idList===listId?<p onClick={this.check}><div className="cards-title">{cardDetails.name} </div><div className="card-delete"><DeleteCards 
+                        
+                          <div  className="cards">
+                           
+                            {cardDetails.idList===listId?<p >
+                            <div>
+
+                            {this.state.showPopup ? 
+                             <CheckList
+                                    closePopup = {this.togglePopup}
+                                    cardId = {this.state.currentCardId}
+                                    
+                                    boardKey = {this.props.boardKey}
+                                    token = {this.props.token}
+                             /> : null }
+                            
+
+                            <div className="cards-title" onClick={(e)=>this.togglePopup(newCardId)}>{cardDetails.name} </div> </div><div className="card-delete"><DeleteCards 
                                        cardId = {cardDetails.id}
                                        deleteCard = {this.deleteCard}
                                        boardKey = {this.props.boardKey}
                                        token = {this.props.token}
                                        /></div>
-                            </p> : null}</div>
+                            </p> : null}
+                            </div>
                             
                         </div> 
             
