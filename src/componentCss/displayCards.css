@@ -1,7 +1,7 @@
-.kela{
-    border: 2px solid red;
+.card-click{
+    /* border: 2px solid red; */
     width: 100%;
-    height: 300%;
+    /* height: 300%; */
 }
 .cards > p{
     display: flex;
@@ -35,6 +35,15 @@
     color: #05386b;
 }
 
+/* .card-input {
+    position: relative;
+} */
+.fixed-cards{
+    overflow-y: auto;
+    max-height: 300px;
+}
+
+
 .card-input form > input{
     width: 100%;
     text-indent: 12px;
@@ -43,12 +52,18 @@
     outline: none;
     height: 46px;
     color: #05386b;
-    background: #edf5e1;
+    background:#cad0c2;
     /* opacity: 0.77; */
     font-size: 1em;
     font-weight: bold;
+    /* position: fixed; */
 }
 
 .card-input form > input::placeholder{
     color:#05386b;
 }
+
+/* .fixed-cards{
+    overflow-y: auto;
+    max-height:467px;
+} */

@@ -1,6 +1,6 @@
 import React,{Component } from 'react';
 import CheckItems from './checkItems';
-import Button from '@material-ui/core/Button';
+import TextField from '@material-ui/core/TextField';
 import '../componentCss/checkList.css';
 class CheckList extends Component {
    constructor(props){
@@ -55,19 +55,22 @@ class CheckList extends Component {
      .then(res=>res.json())
      .then(data=>console.log(data))
    }
+   
     render() {
       return (
         <div className='popup'>
           <div className='popup_inner'>
               <section>
-            <div className="close-button">  <button onClick={this.props.closePopup}>close</button> </div>
+            <div className="close-button">  <button onClick={this.props.closePopup}>-</button> </div>
         {
              this.state.checkListData.map(checkListDetails=>{
                let checkListId = checkListDetails.id
                return <section>
                   <div className="check-list-delete">
                   <h1>{checkListDetails.name}</h1>
-                  <Button variant="contained" color="primary"  onClick={()=>this.deleteCardCheckList(checkListId)}>X</Button>
+                 <button variant="contained" color="primary"  onClick={()=>this.deleteCardCheckList(checkListId)}>delete</button>
+
+
                   </div>
                   <CheckItems
                   cardId = {this.props.cardId}
@@ -78,8 +81,16 @@ class CheckList extends Component {
                   </section>
              })
            }
-          <form onSubmit={this.addCardCheckList}>
-            <input value={this.state.inputValue} onChange={this.onInputHandler} />
+          <form className="new-check-list" onSubmit={this.addCardCheckList}>
+            {/* <input placeholder="Add Checklist" value={this.state.inputValue} onChange={this.onInputHandler} /> */}
+            <TextField
+          id="outlined-dense"
+          label="Add Checklist"
+          value={this.state.inputValue}
+          onChange= {this.onInputHandler}
+          margin="dense"
+          variant="outlined"
+        />
           </form>
                 </section>
           </div>

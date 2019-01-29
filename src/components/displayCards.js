@@ -55,7 +55,10 @@ class DisplayCards extends Component{
     render(){
        let listId = this.props.listId
         if(this.state.listCardData.length!==0){
-           return ( <div className="fixed-cards">
+                    
+           return ( 
+           <div>
+           <div className="fixed-cards">
                     {this.state.listCardData.map(cardDetails=>{
                         let newCardId=cardDetails.id
                         return( 
@@ -64,7 +67,7 @@ class DisplayCards extends Component{
                           <div  className="cards">
                            
                             {cardDetails.idList===listId?<p >
-                            <div>
+                            <div className="card-click">
 
                             {this.state.showPopup ? 
                              <CheckList
@@ -89,13 +92,14 @@ class DisplayCards extends Component{
             
            )})
         }
+        </div>
         <div className="card-input">
         <AddCards 
          listId = {listId}
          addCard = {this.addCard}
          boardKey = {this.props.boardKey}
          token = {this.props.token} /></div>
-        </div>)
+        </div> )
         }else return null
     }
 }

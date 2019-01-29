@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import '../componentCss/checkItems.css'
+import TextField from '@material-ui/core/TextField';
 class CheckItems extends Component{
     constructor(props){
         super(props)
@@ -92,7 +93,7 @@ deleteCheckItems=(_id,checkListId)=>{
                         return <div>
                             <div className="check-items">
                             <p><input type="checkbox" id={item.state} onChange={(e)=>this.onClickCheckBox(e,item.id)} checked={item.state==="complete"?true:false} />{item.name}</p>
-                            <button onClick={()=>this.deleteCheckItems(item.id,item.idChecklist)}>close</button>
+                            <button onClick={()=>this.deleteCheckItems(item.id,item.idChecklist)}>X</button>
                         </div>
 
                         </div>
@@ -101,7 +102,15 @@ deleteCheckItems=(_id,checkListId)=>{
                     
                 }
                 </div>
-                <form onSubmit={(event)=>this.addCheckItems(event,this.props.checkListId)}><input value={this.state.inputValue} onChange={this.onInputChange} placeholder="new check Items" /></form>
+                <form className="new-check-items" onSubmit={(event)=>this.addCheckItems(event,this.props.checkListId)}>
+                    {/* <input value={this.state.inputValue} onChange={this.onInputChange} placeholder="new check Items" /> */}
+                    <TextField
+                        label="new check Items"
+                        value= {this.state.inputValue}
+                        margin="normal"
+                        onChange={this.onInputChange} 
+                    />
+                </form>
                                      
 
                 </section>

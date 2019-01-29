@@ -27,11 +27,13 @@ class DisplayList extends Component{
                      this.props.listCardsDetails
                   }</h1>
                   </div>
-                  <DisplayCards
+                 <div className="board-list-cards">
+                 <DisplayCards
                   boardId = {this.props.boardId}
                   listId = {this.props.listId}
                   boardKey = {this.props.boardKey}
                   token = {this.props.token} />
+                     </div>
                     </div>
                   
                    </section>
