@@ -1,49 +1,46 @@
-import React, {Component} from 'react';
-import '../componentCss/addList.css'
-class AddList extends Component{
-    constructor(props){
-        super(props)
-        this.state={
-            inputValue :""
-        }
-        
-        console.log(this.props)
-        
-    } 
+import React, { Component } from "react";
+import Api from "./api";
+import "../componentCss/addList.css";
+class AddList extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      inputValue: ""
+    };
 
-    inputValueHandler = (event) => {
-        // console.log(this, 'inputValuehandler')
-        this.setState({
-            inputValue:event.target.value
-        })
-    }
+    console.log(this.props);
+  }
 
- addNewList=(event)=>{
-     event.preventDefault()
-          return fetch(`https://api.trello.com/1/lists?name=${this.state.inputValue}&idBoard=${this.props.boardLongId}&pos=bottom&key=${this.props.boardKey}&token=${this.props.token}`,{
-         method:"POST",
-         header:{
-             'Content-Type': 'application/json'
-         }
+  inputValueHandler = event => {
+    // console.log(this, 'inputValuehandler')
+    this.setState({
+      inputValue: event.target.value
+    });
+  };
 
-     })
-     .then(res=>res.json())
-     .then(data=>{
-        console.log(data)
-        this.props.addBoardLists(data)
+  addNewList = event => {
+    event.preventDefault();
+    Api.addList(this.state.inputValue, this.props.boardLongId)
+      .then(res => res.json())
+      .then(data => {
+        console.log(data);
+        this.props.addBoardLists(data);
         return this.setState({
-            inputValue:""
-        }) 
-      })
-        
- }
-    render(){
-        return(
-            <form className="add-list-input" onSubmit={this.addNewList}>
-                <input value={this.state.inputValue} onChange={this.inputValueHandler} placeholder="ADD LIST" />
-                </form>
-        )
-    }
+          inputValue: ""
+        });
+      });
+  };
+  render() {
+    return (
+      <form className="add-list-input" onSubmit={this.addNewList}>
+        <input
+          value={this.state.inputValue}
+          onChange={this.inputValueHandler}
+          placeholder="ADD LIST"
+        />
+      </form>
+    );
+  }
 }
 
-export default AddList
+export default AddList;

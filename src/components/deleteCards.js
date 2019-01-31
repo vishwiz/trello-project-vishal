@@ -1,20 +1,16 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
+import Api from "./api";
 
-class DeleteCards extends Component{
-
-   deleteCards=()=>{
-       this.props.deleteCard(this.props.cardId)
-      return fetch(`https://api.trello.com/1/cards/${this.props.cardId}?&key=${this.props.boardKey}&token=${this.props.token}`,{
-            method:'Delete'
-      })
-      .then(res=>res.json())
-      .then(data=>console.log(data))
-   }
-   render(){
-       return(
-           <button onClick={this.deleteCards}>x</button>
-       )
-   }
+class DeleteCards extends Component {
+  deleteCards = () => {
+    this.props.deleteCard(this.props.cardId);
+    Api.deleteBoardCard(this.props.cardId)
+      .then(res => res.json())
+      .then(data => console.log(data));
+  };
+  render() {
+    return <button onClick={this.deleteCards}>x</button>;
+  }
 }
 
-export default DeleteCards
+export default DeleteCards;
